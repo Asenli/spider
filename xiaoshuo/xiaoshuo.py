@@ -10,13 +10,11 @@ import requests
 
 headers = {'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6'}
 
-
 def get_index_html(url):
     # 首页解析页面
     rep = urllib.request.Request(url, headers=headers)
     res = urllib.request.urlopen(rep, timeout=180)
     return res.read().decode('utf8')
-
 
 # def title_urls(url2):
 #     #获取到所有标题
@@ -33,7 +31,6 @@ def next_urls(title_urls):
         detail_urls.append('https://www.xuanshu.com/soft/sort0{}/{}'.format(i, every_url))
     return detail_urls
 
-
 def title_url(detail_url):
     # 每一页 的所有小说
     htmls = get_index_html(detail_url)
@@ -47,7 +44,6 @@ def title_url(detail_url):
         every_one_list.append('https://www.xuanshu.com{}'.format(every_one_url))
     # 获取每本书最终的下载链接页面
     return every_one_list
-
 
 def downlade(url):
     # 下载
